@@ -1,9 +1,8 @@
 require("dotenv").config()
-require("./app/db/connection")
-
-
+require("./db/connection")
 const express= require("express")
 const cors = require("cors")
+const {resGenerator} = require('./helper/methods')
 
 const userRoutes = require("./routes/user.routes")
 const productRoutes = require("./routes/product.rout")
@@ -21,7 +20,12 @@ app.use("/api/user", userRoutes)
 app.use("/api/product", productRoutes)
 
 
+
+
 app.all("*", (req,res) => {
-    myHelper.resGenerator(res, 404, "Invalid url", "not found")
+    resGenerator(res, 404, "Invalid url", "not found")
 })
+
+
+
 app.listen(process.env.PORT, ()=> console.log(`http://localhost:${process.env.PORT}`))
