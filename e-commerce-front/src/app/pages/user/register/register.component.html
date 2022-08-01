@@ -1,0 +1,42 @@
+<section class="container p-5">
+    <h3 class="text-center text-warning p-3">Register Form</h3>
+    <form [formGroup]="registerForm" (ngSubmit)="registerData()">
+        <div class="mb-3">
+
+            <input type="text" class="form-control" placeholder="Name" formControlName="name" >
+            <div class="alert alert-danger my-2" *ngIf="name?.invalid">
+              <p *ngIf="name?.valid">name valid : {{name?.valid}}</p>
+              <p *ngIf="name?.value">name value :{{name?.value}}</p>
+              <p *ngIf="name?.invalid">name invalid : {{name?.invalid}}</p>
+              <p *ngIf="name?.touched">name touched : {{name?.touched}}</p>
+            </div> 
+            
+          </div>
+        <div class="mb-3">
+          
+          <input type="email" class="form-control" placeholder="email" formControlName="email">
+          <div class="alert alert-danger my-2">
+            {{email?.value}}
+            {{email?.valid}}
+            {{email?.invalid}}
+            {{email?.touched}}
+            {{email?.value}}
+          </div> 
+        </div>
+        <div class="mb-3">
+          
+          <input type="password" class="form-control" placeholder="password" formControlName="password">
+          <div class="alert alert-danger my-2">
+            {{password?.value}}
+            {{password?.valid}}
+            {{password?.invalid}}
+            {{password?.touched}}
+            {{password?.value}}
+          </div> 
+    
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    
+</section>
