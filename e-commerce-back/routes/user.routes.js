@@ -18,6 +18,7 @@ router.post("/deactivate", auth, user.deactivate)
 router.post("/delAccount", auth, user.delAccount)
 router.patch("/edit", auth, user.edit)
 router.post('/changeImage',auth, upload.single('img'), user.changeImage)
-
+router.post("/addToCart",auth,user.addToCart)
+router.post("/orders",user.orders)
 
 module.exports = router 

@@ -1,4 +1,4 @@
-const productModel = require("../../db/models/user.model")
+const productModel = require("../../db/models/product.model")
 const {resGenerator} = require("../../helper/methods")
 
 class Product{

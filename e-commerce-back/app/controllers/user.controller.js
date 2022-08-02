@@ -165,6 +165,28 @@ class User{
             resGenerator(res, 500, e.message, "error")
         }
     }
+     static addToCart= async(req,res)=>{
+
+        try{
+           
+            req.user.carts.push(req.body.productId)
+            req.user.save()
+    
+        }
+        catch(e){
+            resGenerator(res,500,e.message,"error in data")
+        }
+     } 
+     static  orders = async(req,res)=>{
+        try{
+          req.user.orders= req.user.carts
+          req.user.cart = []
+          req.user.save()
+        }
+        catch(e){
+            resGenerator(res,500,e.message,"error in data")
+        }
+     }
 }
 
 

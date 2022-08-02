@@ -1,52 +1,52 @@
 const mongoose      = require("mongoose")
 
-const productSchema = mongoose.schema ({
+const productSchema = mongoose.Schema ({
 name:{
        type: String,
-       required: true,
+      //  required: true,
        trim: true,
        minlength: 3,
        maxlength: 10
    },
    quantity:{
        type: Number,
-       required: true,
+      //  required: true,
        trim: true
        },
 
        description:{
                type: String,
-               required: true,
+            //    required: true,
                trim: true,
                minlength: 10,
                maxlength: 25
    }, 
    image:{
                type: String,
-               required:true
+            //    required:true
    }, 
    color: {
                type: String,
-               required:true,
+            //    required:true,
    },
     size: {
-       type: Boolean,
-       required:true,
+       type: Number,
+    //    required:true,
     } ,
    
    categories:{
        type: String,
-       required: true
+    //    required: true
    },
    price:{
        type: Number,
-       required: true
+    //    required: true
    },
    addedby:{
        type:mongoose.Schema.Types.ObjectId,
-       required:true,
+      //  required:true,
        ref:"User"
-   }, 
+   }
    
 
 
