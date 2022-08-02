@@ -1,4 +1,49 @@
-<section class="container p-5">
+<!-- using template driven  forms  with eng Marwa -->
+
+ <section class="container p-5">
+
+    <h3 class="text-center text-warning p-3">Register Form</h3>
+    <form #register="ngForm" (ngSubmit)="onRegister(register)">
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Name" name="name" ngModel #name="ngModel" >
+          </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="email" name="email" ngModel #email="ngModel">
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control" placeholder="password" name="password" ngModel #password="ngModel">  
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form> 
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- نموذج بسيط للفورم تم التعديل عليه فوقه -->
+<!-- <p>register works!</p>
+<form #register="ngForm" (ngSubmit)=" onRegister(register)">
+    <input name="name" placeholder="name" ngModel #name="ngModel"><br>
+    <input name="email" placeholder="email" ngModel #email="ngModel"><br>
+    <input name="password" placeholder ="password" ngModel #password="ngModel"><br>
+    <button>register</button>
+</form> -->
+
+
+
+<!-- Start using Reactive forms alone -->
+<!-- <section class="container p-5">
+
     <h3 class="text-center text-warning p-3">Register Form</h3>
     <form [formGroup]="registerForm" (ngSubmit)="registerData()">
         <div class="mb-3">
@@ -39,4 +84,4 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     
-</section>
+</section> -->
