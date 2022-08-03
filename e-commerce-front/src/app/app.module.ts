@@ -10,6 +10,12 @@ import { LoginComponent } from './pages/user/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ReactiveFormsModule , FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ActivateComponent } from './pages/user/activate/activate.component';
+import { ChangePasswordComponent } from './pages/user/change-password/change-password.component';
+import { AllUsersComponent } from './pages/user/all-users/all-users.component';
+import { SingleUserComponent } from './pages/user/single-user/single-user.component';
+import { ChangeImageComponent } from './pages/user/change-image/change-image.component';
+import { ProfileComponent } from './pages/user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +24,13 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ActivateComponent,
+    ChangePasswordComponent,
+    AllUsersComponent,
+    SingleUserComponent,
+    ChangeImageComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

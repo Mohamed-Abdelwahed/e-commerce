@@ -10,36 +10,54 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  // registerForm = new FormGroup({
-  //   name:new FormControl('',[
-  //     Validators.required,
-  //     Validators.minLength(3),
-  //     Validators.maxLength(100)
-  //   ]),
+  registerForm = new FormGroup({
+    name:new FormControl('',[
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(100)
+    ]),
     
 
-  // email:new FormControl('',[
-  //   Validators.required,
-  //   Validators.minLength(5)
-  // ]),
+  email:new FormControl('',[
+    Validators.required,
+    Validators.email
+  ]),
 
-  // password:new FormControl('',[
-  //   Validators.required,
-  //   Validators.pattern(''),
-  //   Validators.minLength(8)
-  // ])
+  password:new FormControl('',[
+    Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(100)
+  ])
 
-  // })
+  })
+isSubmitted:boolean = false
+msg = ''
+emailUniqueError = ""
 
-
-
-  // get name(){return this.registerForm.get("name")}
-  // get email(){return this.registerForm.get("email")}
-  // get password(){return this.registerForm.get("password")}
+  get name(){return this.registerForm.get("name")}
+  get email(){return this.registerForm.get("email")}
+  get password(){return this.registerForm.get("password")}
   
-  // registerData(){
+  registerData(){
   //  console.log(this.registerForm.value)
-  // }
+  this.isSubmitted = true
+    if(this.registerForm.valid){
+      this._user.register(this.registerForm.value)
+      .subscribe(
+        (res)=> { console.log(res)},
+        (err)=>{
+          console.log(err.error.data)
+          this.emailUniqueError = err.error.data;
+        },
+        ()=> {
+          console.log("done")
+          this._route.navigate(["/"])
+          // this._route.navigateByUrl("/")
+        }
+        
+        )
+    }
+  }
 
 
   /**
@@ -51,20 +69,20 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  onRegister(data:NgForm){
-    if(data.valid){
-      this._user.register(data.value)
-      .subscribe(
-        (res)=> { console.log(res)},
-        (err)=>{console.log(err.error.data)},
-        ()=> {
-          console.log("done")
-          this._route.navigate(["/"])
-          // this._route.navigateByUrl("/")
-        }
+  // onRegister(data:NgForm){
+  //   if(data.valid){
+  //     this._user.register(data.value)
+  //     .subscribe(
+  //       (res)=> { console.log(res)},
+  //       (err)=>{console.log(err.error.data)},
+  //       ()=> {
+  //         console.log("done")
+  //         this._route.navigate(["/"])
+  //         // this._route.navigateByUrl("/")
+  //       }
         
-        )
-    }
-  }
+  //       )
+  //   }
+  // }
 
 }
