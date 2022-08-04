@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/user/login/login.component';
 import { ProfileComponent } from './pages/user/profile/profile.component';
 import { RegisterComponent } from './pages/user/register/register.component';
 import { SingleUserComponent } from './pages/user/single-user/single-user.component';
+import { AddProductComponent } from './product/add-product/add-product.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -20,6 +21,9 @@ const routes: Routes = [
       {path:":id",component:SingleUserComponent}
     ]},
     {path:"editeProfile" , component:ProfileComponent}
+  ]},
+  {path:"product", children:[
+    {path:"add" ,component:AddProductComponent }
   ]}
   
 ];

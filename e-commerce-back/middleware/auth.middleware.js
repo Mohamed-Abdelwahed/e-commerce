@@ -17,7 +17,7 @@ const auth = async(req, res, next)=>{
         next()
     }
     catch(e){
-        resGenerator(res, 500, e.message, "unauthorized")
+        resGenerator(res, 500, e.message, "unauthorized user")
     }
 }
 
@@ -31,7 +31,7 @@ const authAdmin = async(req, res, next)=>{
         next()
     }
     catch(e){
-        resGenerator(res, 500, e.message, "unauthorized")
+        resGenerator(res, 500, e.message, "unauthorized admin")
     }
 }
 

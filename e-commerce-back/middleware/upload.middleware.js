@@ -1,6 +1,4 @@
-// const multer  = require('multer')
-// const upload = multer({ dest: './uploads/' })
-// module.exports = upload
+
 const multer= require("multer")
 const path = require("path")
 const storage = multer.diskStorage({
@@ -15,6 +13,5 @@ const storage = multer.diskStorage({
 const upload= multer({
     storage,
     limits:{fileSize:20000000},
-    // fileFilter
 })
 module.exports=upload

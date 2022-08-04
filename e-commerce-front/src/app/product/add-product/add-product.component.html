@@ -1,0 +1,63 @@
+<section class="container p-5">
+
+    <h3 class="text-center text-warning p-3">Add Product Form</h3>
+    <form [formGroup]="addproductForm" (ngSubmit)="addProductData()">
+        <div class="mb-3">
+
+            <input type="text" class="form-control" placeholder="Name" formControlName="name" >
+            <!-- <div class="alert alert-danger my-2" *ngIf="name?.invalid">
+              <p *ngIf="name?.valid">name valid : {{name?.valid}}</p>
+              <p *ngIf="name?.value">name value :{{name?.value}}</p>
+              <p *ngIf="name?.invalid">name invalid : {{name?.invalid}}</p>
+              <p *ngIf="name?.touched">name touched : {{name?.touched}}</p>
+            </div>  -->
+            
+          </div>
+        <div class="mb-3">
+          
+          <input class="form-control" placeholder="quantity" formControlName="quantity">
+          <!-- <div class="alert alert-danger my-2">
+            {{email?.value}}
+            {{email?.valid}}
+            {{email?.invalid}}
+            {{email?.touched}}
+            {{email?.value}}
+          </div>  -->
+        </div>
+        <div class="mb-3">
+          
+          <input class="form-control" placeholder="description" formControlName="description">
+          <!-- <div class="alert alert-danger my-2">
+            {{password?.value}}
+            {{password?.valid}}
+            {{password?.invalid}}
+            {{password?.touched}}
+            {{password?.value}}
+          </div>  -->
+    
+        </div>
+
+        <div class="mb-3"> 
+          <input class="form-control" placeholder="image" formControlName="image">
+        </div>
+
+        <div class="mb-3"> 
+          <input class="form-control" placeholder="color" formControlName="color">
+        </div>
+
+        <div class="mb-3"> 
+          <input type="number" class="form-control" placeholder="size" formControlName="size">
+        </div>
+
+        <div class="mb-3"> 
+          <input class="form-control" placeholder="categories" formControlName="categories">
+        </div>
+
+        <div class="mb-3"> 
+          <input type="number" class="form-control" placeholder="price" formControlName="price">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    
+</section>

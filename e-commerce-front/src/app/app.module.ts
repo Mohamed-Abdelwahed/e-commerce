@@ -16,6 +16,7 @@ import { AllUsersComponent } from './pages/user/all-users/all-users.component';
 import { SingleUserComponent } from './pages/user/single-user/single-user.component';
 import { ChangeImageComponent } from './pages/user/change-image/change-image.component';
 import { ProfileComponent } from './pages/user/profile/profile.component';
+import { AddProductComponent } from './product/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProfileComponent } from './pages/user/profile/profile.component';
     AllUsersComponent,
     SingleUserComponent,
     ChangeImageComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
