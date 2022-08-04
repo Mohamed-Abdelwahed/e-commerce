@@ -10,79 +10,49 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerForm = new FormGroup({
-    name:new FormControl('',[
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(100)
+  isSubmitted : boolean = false
+  registerUser = new FormGroup({
+    name:new FormControl("", [
+      Validators.required, 
+      Validators.maxLength(20), 
+      Validators.minLength(5)
     ]),
-    
-
-  email:new FormControl('',[
-    Validators.required,
-    Validators.email
-  ]),
-
-  password:new FormControl('',[
-    Validators.required,
-      Validators.minLength(8),
-      Validators.maxLength(100)
-  ])
-
+    email:new FormControl("", [
+      Validators.required, 
+      Validators.email
+    ]),
+    password:new FormControl("", [
+      Validators.required, 
+      Validators.maxLength(20), 
+      Validators.minLength(5)
+    ])
   })
-isSubmitted:boolean = false
-msg = ''
-emailUniqueError = ""
+  msg=""
+  emailUniqueError = ""
+  constructor(private _user : UserService, private _router:Router) { }
 
-  get name(){return this.registerForm.get("name")}
-  get email(){return this.registerForm.get("email")}
-  get password(){return this.registerForm.get("password")}
-  
-  registerData(){
-  //  console.log(this.registerForm.value)
-  this.isSubmitted = true
-    if(this.registerForm.valid){
-      this._user.register(this.registerForm.value)
+  ngOnInit(): void {}
+  get name() { return this.registerUser.get("name")}
+  get email() { return this.registerUser.get("email")}
+  get password() { return this.registerUser.get("password")}
+  register(){
+    this.isSubmitted=true
+    if(this.registerUser.valid){
+      this._user.register(this.registerUser.value)
       .subscribe(
-        (res)=> { console.log(res)},
-        (err)=>{
-          console.log(err.error.data)
-          this.emailUniqueError = err.error.data;
+        (res)=> {
+          this._user.otp=res.data.otp
+          console.log(res)
+        },
+        (err)=> {
+          this.msg=err.error.data
+          this.emailUniqueError="email used before"
         },
         ()=> {
-          console.log("done")
-          this._route.navigate(["/"])
-          // this._route.navigateByUrl("/")
+          this._router.navigateByUrl("/user/activate")
         }
-        
-        )
+      )
     }
   }
-
-
-  /**
-   * Start using template Forms with Eng Marwa
-   */
-
-   userData:User = {name:'' , email:'',password:''}
-  constructor(private _user:UserService, private _route:Router) {}
-  ngOnInit(): void {
-  }
-  
-  // onRegister(data:NgForm){
-  //   if(data.valid){
-  //     this._user.register(data.value)
-  //     .subscribe(
-  //       (res)=> { console.log(res)},
-  //       (err)=>{console.log(err.error.data)},
-  //       ()=> {
-  //         console.log("done")
-  //         this._route.navigate(["/"])
-  //         // this._route.navigateByUrl("/")
-  //       }
-        
-  //       )
-  //   }
-  // }
 
 }
