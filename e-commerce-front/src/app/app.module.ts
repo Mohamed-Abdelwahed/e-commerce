@@ -17,6 +17,7 @@ import { SingleUserComponent } from './pages/user/single-user/single-user.compon
 import { ChangeImageComponent } from './pages/user/change-image/change-image.component';
 import { ProfileComponent } from './pages/user/profile/profile.component';
 import { AddProductComponent } from './product/add-product/add-product.component';
+import { CardComponent } from './shared/user/card/card.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AddProductComponent } from './product/add-product/add-product.component
     SingleUserComponent,
     ChangeImageComponent,
     ProfileComponent,
-    AddProductComponent
+    AddProductComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

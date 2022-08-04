@@ -1,1 +1,32 @@
-<p>activate works!</p>
+<section class="my-5 container">
+    <h2  class="text-center text-primary mb-3">Activate User</h2>
+    <div *ngIf="msg" class="alert alert-danger mb-3">{{msg|json}}</div>
+    <form [formGroup]="activateForm" (ngSubmit)="register()">
+        <div class="mb-3">
+            <input class="form-control" formControlName="email" placeholder="email">
+            <div class="alert alert-danger my-2" *ngIf="email?.invalid  && (isSubmitted || email?.dirty || email?.touched)">
+                <li *ngIf="email?.errors?.['required']">required</li>
+                <li *ngIf="email?.errors?.['email']">must be an email</li>
+            </div>
+            <div class="alert alert-danger my-2" *ngIf="emailUniqueError">{{emailUniqueError}}</div>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" formControlName="password" placeholder="password">
+            <div class="alert alert-danger my-2" *ngIf="password?.invalid && (isSubmitted || password?.dirty || password?.touched)">
+                <li *ngIf="password?.errors?.['required']">required</li>
+                <li *ngIf="password?.errors?.['minlength']">min length 5 chars</li>
+                <li *ngIf="password?.errors?.['maxlength']">max length 20 chars</li>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" formControlName="otp" placeholder="name">
+                <div class="alert alert-danger my-2" *ngIf="otp?.invalid && (isSubmitted || otp?.dirty || otp?.touched)">
+                    <li *ngIf="otp?.errors?.['required']">required</li>
+                </div>
+            </div>
+            
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary">Activate</button>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,14 @@
+<div class="col-4">
+    <div class="border border-3 m-3">
+        <span *ngIf="user.pImage;then img;else noImg"></span>
+        <ng-template #img>
+            <img src="http://localhost:4242/{{user.pImage}}" class = "img-fluid">
+        </ng-template>
+<ng-template #noImg>
+    <img src="assets/img.png" class ="img-fluid">
+</ng-template>
+<h6 class="p-3"> {{user.name}} </h6>
+<h6 class="p-3"> {{user.type}}</h6>
+<button cass="btn btn-success m-3" routerLink="/user/all/{{user._id}}">show</button>
+    </div>
+</div>

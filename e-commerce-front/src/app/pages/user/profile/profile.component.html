@@ -1,1 +1,12 @@
-<p>profile works!</p>
+<section class="container my-5">
+    <span *ngIf="_user.userData.pImage; then img; else noImg "></span>
+    <ng-template #img>
+        <img src="http://localhost:3000/{{_user.userData.pImage}}" class="img-fluid">
+    </ng-template>
+    <ng-template #noImg>
+        <img src="assets/img.png" class="img-fluid">
+    </ng-template>
+    <input type="file" class="form-control" (change)="fileChng($event)">
+    <button class="btn btn-primary" (click)="upImg()">edit </button>
+
+</section>

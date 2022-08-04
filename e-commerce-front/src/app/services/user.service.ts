@@ -8,69 +8,54 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  private apiLink:string = "http://localhost:4242/api/user/"
-
+  private baseUrl:string = "http://localhost:4242/api/user/"
+  public otp = ""
+  public isLoggedIn : boolean = false
+  public userData:any = null
   constructor(private _http:HttpClient) { }
-
   register(data:any):Observable<any>{
-    return this._http.post(`${this.apiLink}register`, data)
+    return this._http.post(`${this.baseUrl}register`, data)
   }
-
-  
   login(data:any):Observable<any>{
-    return this._http.post(`${this.apiLink}login`, data)
+    return this._http.post(`${this.baseUrl}login`, data)
   }
-
   activateAcc(data:any):Observable<any>{
-    return this._http.post(`${this.apiLink}activate account`, data)
+    return this._http.post(`${this.baseUrl}activateAcc`, data)
   }
-
-  me(data:any):Observable<any>{
-    return this._http.post(`${this.apiLink}me`, data)
+  me():Observable<any>{
+    return this._http.get(`${this.baseUrl}me`)
   }
-
-  sendOTP(data:any):Observable<any>{
-    return this._http.post(`${this.apiLink}sendOTP`, data)
+  sendOtp(data:any):Observable<any>{
+    return this._http.post(`${this.baseUrl}sendOtp`, data)
   }
-
   changePassword(data:any):Observable<any>{
-    return this._http.post(`${this.apiLink}changePassword`, data)
+    return this._http.post(`${this.baseUrl}changePassword`, data)
   }
-
   logout():Observable<any>{
-    return this._http.post(`${this.apiLink}logout`, null)
+    return this._http.post(`${this.baseUrl}logout`, null)
   }
-
   logoutAll():Observable<any>{
-    return this._http.post(`${this.apiLink}logoutAll`, null)
+    return this._http.post(`${this.baseUrl}logoutAll`, null)
   }
-
-  allUsers():Observable<any>{
-    return this._http.get(`${this.apiLink}allUsers`)
+  all():Observable<any>{
+    return this._http.get(`${this.baseUrl}all`)
   }
-
-  singleUser():Observable<any>{
-    return this._http.get(`${this.apiLink}singleUser`)
+  single(id:string):Observable<any>{
+    return this._http.get(`${this.baseUrl}all/${id}`)
   }
-
-  deactivate(data:any):Observable<any>{
-    return this._http.post(`${this.apiLink}deactivate`, data)
-  }
-
   editPassword(data:any):Observable<any>{
-    return this._http.post(`${this.apiLink}editPassword`, data)
+    return this._http.post(`${this.baseUrl}editPassword`, data)
   }
-
+  deactivate(data:any):Observable<any>{
+    return this._http.post(`${this.baseUrl}deactivate`, data)
+  }
   delAccount(data:any):Observable<any>{
-    return this._http.post(`${this.apiLink}delete acount`, data)
+    return this._http.post(`${this.baseUrl}delAccount`, data)
   }
-
   edit(data:any):Observable<any>{
-    return this._http.post(`${this.apiLink}edit`, data)
+    return this._http.post(`${this.baseUrl}edit`, data)
   }
-
-  ChangeImage(data:any):Observable<any>{
-    return this._http.post(`${this.apiLink}change Image`, data)
+  changeImage(data:any):Observable<any>{
+    return this._http.post(`${this.baseUrl}changeImage`, data)
   }
-
 }
